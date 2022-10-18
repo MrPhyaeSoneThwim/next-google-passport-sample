@@ -6,8 +6,10 @@ import jwt from "jsonwebtoken";
 import User from "../models/User";
 import { useRouter } from "next/router";
 
-function Dashboard({ name, email }) {
+function Dashboard(props) {
   const router = useRouter();
+
+  console.log(props);
 
   const logout = () => {
     removeCookies("token");
@@ -19,8 +21,8 @@ function Dashboard({ name, email }) {
       <Head>
         <title>Dashboard</title>
       </Head>
-      <div>Welcome {name}!</div>
-      <div>{email}</div>
+      <div>Welcome {props?.name}!</div>
+      <div>{props?.email}</div>
       <button onClick={logout}>Logout</button>
     </div>
   );

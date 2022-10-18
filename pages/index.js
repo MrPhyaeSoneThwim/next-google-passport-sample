@@ -20,7 +20,8 @@ export default function Home() {
 export async function getServerSideProps({ req, res }) {
   try {
     const cookieExists = getCookie("token", { req, res });
-    console.log(cookieExists);
+    const userInfo = getCookie("userInfo", { req, res });
+    console.log(userInfo);
     if (cookieExists) return { redirect: { destination: "/dashboard" } };
     return { props: {} };
   } catch (err) {
